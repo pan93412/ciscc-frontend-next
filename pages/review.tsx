@@ -15,10 +15,13 @@ interface ReviewPageProps {
 
 function HowToReviewReadme() {
   return (
-    <section className="flex justify-between readme-part">
+    <section className="flex flex-col space-y-2 md:flex-row md:justify-between md:space-y-0 readme-part">
       <div className="leading-loose">
         <h2 className="text-lg font-bold">如何審文？</h2>
-        請至群組的 <code>#指令區</code> 進行操作。
+        <p>
+          請至群組的 <code>#指令區</code> 進行操作。
+          <code>(ID)</code> 就是下方清單最左邊的數字～
+        </p>
       </div>
       <div className="leading-loose text-right">
         <p>
@@ -29,7 +32,7 @@ function HowToReviewReadme() {
             />
           </span>
           <span>
-            允許文章發布，請輸入 <code>CISCC 我核可 #(ID)</code>
+            允許文章發布，請在群組傳：<code>CISCC 我核可 #(ID)</code>
           </span>
         </p>
         <p>
@@ -40,7 +43,7 @@ function HowToReviewReadme() {
             />
           </span>
           <span>
-            拒絕文章發布，請輸入 <code>CISCC 我拒絕 #(ID)</code>
+            拒絕文章發布，請在群組傳：<code>CISCC 我拒絕 #(ID)</code>
           </span>
         </p>
       </div>
