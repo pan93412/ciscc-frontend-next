@@ -2,7 +2,7 @@
  * The product name that will be used on
  * CommonDB and somewhere.
  */
-export const PRODUCT_NAME = "CISCC 靠北系統";
+export const PRODUCT_NAME = "CISC 匿名偷偷說";
 /**
  * Enable Google Analytics.
  *
