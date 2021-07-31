@@ -10,6 +10,7 @@ import type { StrapiMessagesResponseSchema } from "../components/Http/common";
 import GetUnpublishedContent from "../components/Http/getUnpublishedContent";
 import BaseCardGroup from "../components/Elements/Card/Group/BaseCardGroup";
 import PostCard from "../components/Elements/Card/PostCard";
+import { reportException } from "../utilities/ErrorReporting/reportExceptionMessage";
 
 function HowToReviewReadme() {
   return (
@@ -61,8 +62,10 @@ function UnpublishedContentCardList() {
   }, [data, error]);
 
   useEffect(() => {
-    if (error)
+    if (error) {
+      reportException(error);
       void Swal.fire(`發生 ${error.name} 錯誤`, `${error.message}`, "error");
+    }
   }, [error]);
 
   if (error) return null;
