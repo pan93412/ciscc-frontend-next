@@ -1,16 +1,19 @@
 import React from "react";
-import NavbarContent from "./NavbarContent";
-import NavbarIcon from "./NavbarIcon";
+import BaseBadge from "../Elements/Badge/BaseBadge";
+import BaseButton from "../Elements/Button/BaseButton";
 
 export default function Navbar() {
   return (
-    <div className="p-8 grid grid-col-1 md:grid-col-3 content-center items-center">
-      <div className="col-start-1 col-end-1">
-        <NavbarIcon />
+    <section className="p-10 grid sm:grid-cols-2 grid-cols-1 pb-4 mb-4 border-b border-gray-300 items-center">
+      <div className="justify-self-center sm:justify-self-start">
+        <h1 className="text-2xl font-bold text-center">
+          CISCC 靠北系統
+          <BaseBadge className="bg-green-800 text-white">v2.0β</BaseBadge>
+        </h1>
       </div>
-      <div className="col-start-3 col-end-3 justify-self-end">
-        <NavbarContent />
+      <div className="justify-self-center sm:justify-self-end mt-1 sm:mt-auto">
+        <BaseButton>進入審文系統</BaseButton>
       </div>
-    </div>
+    </section>
   );
 }
