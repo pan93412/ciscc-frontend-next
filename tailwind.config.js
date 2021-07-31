@@ -17,6 +17,13 @@ module.exports = {
         "serif": "'Noto Serif TC', serif",
         "mono": "'JetBrains Mono', Menlo, monospace",
       },
+      colors: {
+        "discord": "#767E8B",
+      },
+      backgroundColor: {
+        "discord": "#36393E",
+        "discord-blue": "#5666ED",
+      },
     },
   },
   variants: {
