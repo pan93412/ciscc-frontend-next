@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  code {
+    @apply bg-gray-100 p-2 rounded
+  }
+}
+
+@layer components {
+  .readme-part {
+    @apply border-l-4 border-gray-200 pl-8;
+  }
+
+  pre.command-part {
+    @apply ml-12 font-mono m-4;
+  }
+}
