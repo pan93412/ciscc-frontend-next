@@ -22,8 +22,7 @@ export default function BaseTextarea({
       onChange={(event) => onValueChange(event.target.value)}
       placeholder={placeholder}
       className={className}
-    >
-      {value}
-    </textarea>
+      value={value}
+    />
   );
 }
