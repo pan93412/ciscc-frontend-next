@@ -1,17 +1,15 @@
-import React from "react";
-import type { GetServerSideProps } from "next";
+import React, { useEffect } from "react";
 import type { Infer } from "myzod";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useSWR from "swr";
+import NProgress from "nprogress";
+import Swal from "sweetalert2";
 import BasePage from "../components/Page/BasePage";
 import type { StrapiMessagesResponseSchema } from "../components/Http/common";
 import GetUnpublishedContent from "../components/Http/getUnpublishedContent";
 import BaseCardGroup from "../components/Elements/Card/Group/BaseCardGroup";
 import PostCard from "../components/Elements/Card/PostCard";
-
-interface ReviewPageProps {
-  unpublishedContent: Infer<typeof StrapiMessagesResponseSchema>;
-}
 
 function HowToReviewReadme() {
   return (
@@ -51,29 +49,53 @@ function HowToReviewReadme() {
   );
 }
 
-export default function ReviewPage({ unpublishedContent }: ReviewPageProps) {
+function UnpublishedContentCardList() {
+  const { data, error } = useSWR<
+    Infer<typeof StrapiMessagesResponseSchema>,
+    Error
+  >("/messages?published=false", GetUnpublishedContent);
+
+  useEffect(() => {
+    if (!data && !error) NProgress.start();
+    else NProgress.done();
+  }, [data, error]);
+
+  useEffect(() => {
+    if (error)
+      void Swal.fire(`發生 ${error.name} 錯誤`, `${error.message}`, "error");
+  }, [error]);
+
+  if (error) return null;
+
+  if (!data)
+    return (
+      <div className="font-bold text-gray-400 mb-3 text-left">資料載入中⋯⋯</div>
+    );
+
   return (
-    <BasePage title="查看未發布內容">
-      <div className="border-b border-gray-300 pb-8 mb-8">
-        <HowToReviewReadme />
-      </div>
+    <>
       <div className="font-bold text-gray-400 mb-3 text-left">
-        共 {unpublishedContent.length} 篇未發布內容
+        共 {data.length} 篇未發布內容
       </div>
       <BaseCardGroup>
-        {unpublishedContent.map(({ approved, message, id }) => (
+        {data.map(({ approved, message, id }) => (
           <PostCard key={`postCard-${id}`} id={id} approved={approved}>
             {message}
           </PostCard>
         ))}
       </BaseCardGroup>
+    </>
+  );
+}
+export default function ReviewPage() {
+  return (
+    <BasePage title="查看未發布內容">
+      <div className="border-b border-gray-300 pb-8 mb-8">
+        <HowToReviewReadme />
+      </div>
+      <main>
+        <UnpublishedContentCardList />
+      </main>
     </BasePage>
   );
 }
-
-export const getServerSideProps: GetServerSideProps<ReviewPageProps> =
-  async () => ({
-    props: {
-      unpublishedContent: await GetUnpublishedContent(),
-    },
-  });
