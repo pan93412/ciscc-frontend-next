@@ -1,6 +1,8 @@
+import Link from "next/link";
 import React from "react";
 import BaseBadge from "../Elements/Badge/BaseBadge";
 import BaseButton from "../Elements/Button/BaseButton";
+import BaseButtonGroup from "../Elements/Button/Group/BaseButtonGroup";
 
 export default function Navbar() {
   return (
@@ -12,7 +14,14 @@ export default function Navbar() {
         </h1>
       </div>
       <div className="justify-self-center sm:justify-self-end mt-1 sm:mt-auto">
-        <BaseButton>進入審文系統</BaseButton>
+        <BaseButtonGroup>
+          <Link href="/review">
+            <BaseButton>審文</BaseButton>
+          </Link>
+          <Link href="/">
+            <BaseButton solid>發文</BaseButton>
+          </Link>
+        </BaseButtonGroup>
       </div>
     </section>
   );
