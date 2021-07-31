@@ -1,10 +1,19 @@
 import axios from "axios";
+import type { Infer } from "myzod";
+import type { StrapiMessagesResponseEntrySchema } from "./common";
+import { buildApiMethodEndpoint } from "./common";
 
-const buildApiMethodEndpoint = (method: string) =>
-  `${process.env.NEXT_PUBLIC_BACKEND_API_ENDPOINT}${method}`;
-
+/**
+ * Send a message to API.
+ *
+ * @param message The message.
+ * @constructor
+ */
 export default async function SendMessage(message: string) {
-  return axios.post(buildApiMethodEndpoint("/messages"), {
-    message,
-  });
+  return axios.post<Infer<typeof StrapiMessagesResponseEntrySchema>>(
+    buildApiMethodEndpoint("/messages"),
+    {
+      message,
+    }
+  );
 }
