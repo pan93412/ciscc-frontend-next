@@ -22,19 +22,19 @@ Router.events.on("routeChangeError", () => {
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  if (ENABLE_GA) {
-    // mostly from https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
-    const router = useRouter();
-    useEffect(() => {
-      const handleRouteChange = (url: string) => {
-        gtag.pageview(url);
-      };
-      router.events.on("routeChangeComplete", handleRouteChange);
-      return () => {
-        router.events.off("routeChangeComplete", handleRouteChange);
-      };
-    }, [router.events]);
-  }
+  const router = useRouter();
+
+  // mostly from https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
+  useEffect(() => {
+    if (!ENABLE_GA) return undefined;
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Component {...pageProps} />;
