@@ -6,6 +6,10 @@
   code {
     @apply bg-gray-100 p-2 rounded
   }
+
+  .center {
+    @apply flex justify-center justify-items-center content-center items-center;
+  }
 }
 
 @layer components {
