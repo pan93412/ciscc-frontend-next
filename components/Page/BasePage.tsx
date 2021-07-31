@@ -17,7 +17,7 @@ export default function BasePage({
   navbar = true,
   children,
 }: BasePageProps) {
-  const fullScreenClass = full ? "w-screen h-screen" : "";
+  const fullScreenClass = full ? "w-screen h-screen" : "lg:max-w-5xl mx-auto";
   const fullClass = full ? "w-full h-full h-screen" : "";
 
   return (
