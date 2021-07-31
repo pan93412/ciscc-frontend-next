@@ -1,6 +1,6 @@
 {
   "name": "ciscc-frontend-next",
-  "version": "1.0.0-pre.2",
+  "version": "1.0.0-pre.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
