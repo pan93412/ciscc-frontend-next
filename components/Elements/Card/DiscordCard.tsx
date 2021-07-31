@@ -18,7 +18,7 @@ function DiscordContentHeader({ currentDate }: DiscordContentHeaderProps) {
     <div className="flex content-header-part space-x-2 items-center">
       <div className="text-discord">ciscc</div>
       <BaseBadge
-        badgeBasicStyle="px-2 py-1 rounded-lg max-w-max text-xs center"
+        badgeBasicStyle="px-2 py-1 rounded-lg max-w-max text-xs center hidden md:block"
         className="bg-discord-blue text-white"
       >
         機器人
@@ -34,7 +34,12 @@ export default function DiscordCard({ children, date }: DiscordCardProps) {
   return (
     <section className="flex p-10 rounded-xl bg-discord text-white space-x-6 font-medium">
       <div className="icon-part">
-        <Image src={discordIcon as StaticImageData} alt={"Discord's Icon"} />
+        <Image
+          src={discordIcon as StaticImageData}
+          alt="Discord's Icon"
+          height="64px"
+          width="64px"
+        />
       </div>
       <div className="content-part leading-relaxed">
         <DiscordContentHeader currentDate={date} />
