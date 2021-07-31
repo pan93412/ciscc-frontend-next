@@ -45,7 +45,7 @@ export default function DiscordMarkdownEditor({
             {userInput.length ? (
               ReactHtmlParser(toHTML(userInput))
             ) : (
-              <p className="text-gray-600">
+              <p className="text-gray-400">
                 這裡會即時顯示「撰寫區」在 Discord 的渲染結果。
               </p>
             )}
