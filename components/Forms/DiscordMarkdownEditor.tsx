@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { toHTML } from "discord-markdown";
 import ReactHtmlParser from "react-html-parser";
+import dynamic from "next/dynamic";
 import BaseTextarea from "../Elements/Input/BaseTextarea";
+
+const DiscordCard = dynamic(() => import("../Elements/Card/DiscordCard"));
 
 export interface DiscordMarkdownEditorProps {
   userInput: string;
@@ -31,26 +34,28 @@ export default function DiscordMarkdownEditor({
         <BaseTextarea
           value={userInput}
           onValueChange={setUserInput}
-          className="border-b-1 bg-gray-50 shadow p-4 w-full"
+          className="border-b-1 bg-gray-50 shadow p-4 w-full h-full"
         />
       </div>
       <div className="border lg:border-0 p-4 lg:py-0">
         <div className="text-center font-bold mb-2">📄 預覽</div>
-        <div>---</div>
-        <div>
-          {userInput.length ? (
-            ReactHtmlParser(toHTML(userInput))
-          ) : (
-            <p className="text-gray-600">
-              這裡會即時顯示「撰寫區」在 Discord 的渲染結果。
-            </p>
-          )}
-        </div>
-        <div className="mb-4">---</div>
-        <div>文章 ID：（未知）</div>
-        <div>
-          發表時間：{currentDate?.toLocaleString("zh-TW") ?? "（載入中）"}
-        </div>
+        <DiscordCard date={currentDate}>
+          <div>---</div>
+          <div>
+            {userInput.length ? (
+              ReactHtmlParser(toHTML(userInput))
+            ) : (
+              <p className="text-gray-600">
+                這裡會即時顯示「撰寫區」在 Discord 的渲染結果。
+              </p>
+            )}
+          </div>
+          <div className="mb-4">---</div>
+          <div>文章 ID：（未知）</div>
+          <div>
+            發表時間：{currentDate?.toLocaleString("zh-TW") ?? "（載入中）"}
+          </div>
+        </DiscordCard>
       </div>
     </section>
   );
