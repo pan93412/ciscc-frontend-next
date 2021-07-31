@@ -1,6 +1,8 @@
 import React from "react";
 import type { GetServerSideProps } from "next";
 import type { Infer } from "myzod";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BasePage from "../components/Page/BasePage";
 import type { StrapiMessagesResponseSchema } from "../components/Http/common";
 import GetUnpublishedContent from "../components/Http/getUnpublishedContent";
@@ -13,14 +15,35 @@ interface ReviewPageProps {
 
 function HowToReviewReadme() {
   return (
-    <section className="readme-part mb-8">
-      <h2 className="text-lg font-bold mb-2">如何審文？</h2>
-      請到群組的 <code>#指令區</code> 傳送：
-      <pre className="command-part">CISCC 我核可 #(ID)</pre>
-      就表示你覺得這篇文章可以發布。假如你覺得這文章不妥，卻進入「準備發布」區，
-      請到群組的 <code>#指令區</code> 傳送：
-      <pre className="command-part">CISCC 我拒絕 #(ID)</pre>
-      就可以擋下來，讓訊息回到待審核狀態。
+    <section className="flex justify-between readme-part">
+      <div className="leading-loose">
+        <h2 className="text-lg font-bold">如何審文？</h2>
+        請至群組的 <code>#指令區</code> 進行操作。
+      </div>
+      <div className="leading-loose text-right">
+        <p>
+          <span>
+            <FontAwesomeIcon
+              icon={faCheck}
+              className="fill-current text-green-400 mr-2"
+            />
+          </span>
+          <span>
+            允許文章發布，請輸入 <code>CISCC 我核可 #(ID)</code>
+          </span>
+        </p>
+        <p>
+          <span>
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="fill-current text-red-400 mr-2"
+            />
+          </span>
+          <span>
+            拒絕文章發布，請輸入 <code>CISCC 我拒絕 #(ID)</code>
+          </span>
+        </p>
+      </div>
     </section>
   );
 }
@@ -28,7 +51,12 @@ function HowToReviewReadme() {
 export default function ReviewPage({ unpublishedContent }: ReviewPageProps) {
   return (
     <BasePage title="查看未發布內容">
-      <HowToReviewReadme />
+      <div className="border-b border-gray-300 pb-8 mb-8">
+        <HowToReviewReadme />
+      </div>
+      <div className="font-bold text-gray-400 mb-3 text-left">
+        共 {unpublishedContent.length} 篇未發布內容
+      </div>
       <BaseCardGroup>
         {unpublishedContent.map(({ approved, message, id }) => (
           <PostCard key={`postCard-${id}`} id={id} approved={approved}>
