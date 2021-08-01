@@ -40,6 +40,7 @@ export default function DiscordMarkdownEditor({
       <div className="border lg:border-0 p-4 lg:py-0">
         <div className="text-center font-bold mb-2">📄 預覽</div>
         <DiscordCard date={currentDate}>
+          <div>#1 | {currentDate?.toLocaleString("zh-TW") ?? "（載入中）"}</div>
           <div>---</div>
           <div>
             {userInput.length ? (
@@ -50,11 +51,9 @@ export default function DiscordMarkdownEditor({
               </p>
             )}
           </div>
-          <div className="mb-4">---</div>
-          <div>文章 ID：（未知）</div>
-          <div>
-            發表時間：{currentDate?.toLocaleString("zh-TW") ?? "（載入中）"}
-          </div>
+          <div>---</div>
+          <div>想匿名說什麼？ → https://ciscc.pan93.tk</div>
+          <div>想當訊息審核員？ → https://ciscc.pan93.tk/review</div>
         </DiscordCard>
       </div>
     </section>
