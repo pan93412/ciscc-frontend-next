@@ -32,19 +32,19 @@ function DiscordContentHeader({ currentDate }: DiscordContentHeaderProps) {
 
 export default function DiscordCard({ children, date }: DiscordCardProps) {
   return (
-    <section className="flex p-10 rounded-xl bg-discord text-white space-x-6 font-medium">
+    <section className="discord-card grid message-section gap-6 p-10 rounded-xl bg-discord text-white font-medium">
       <div className="icon-part">
-        <Image
-          src={discordIcon as StaticImageData}
-          alt="Discord's Icon"
-          height="64px"
-          width="64px"
-        />
+        <Image src={discordIcon as StaticImageData} alt="Discord's Icon" />
       </div>
       <div className="content-part leading-relaxed">
         <DiscordContentHeader currentDate={date} />
         <div className="content-main-part">{children}</div>
       </div>
+      <style jsx scoped>{`
+        .message-section {
+          grid-template: "icon message" 100% / 3em auto;
+        }
+      `}</style>
     </section>
   );
 }
