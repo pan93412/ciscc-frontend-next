@@ -10,6 +10,16 @@
   .center {
     @apply flex justify-center justify-items-center content-center items-center;
   }
+
+  /* The <code> in .discord-card */
+  .discord-card code {
+    @apply bg-gray-900 p-1 rounded
+  }
+
+  /* Syntax highlighting for something like <@114514> */
+  .discord-card .d-user.d-mention {
+    @apply bg-blue-800 p-1 rounded
+  }
 }
 
 @layer components {
