@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="justify-self-center sm:justify-self-start">
         <h1 className="text-2xl font-bold text-center">
           {PRODUCT_NAME}
-          <BaseBadge className="bg-green-800 text-white">v2.0β</BaseBadge>
+          <BaseBadge className="bg-green-800 text-white">v2.0</BaseBadge>
         </h1>
       </div>
       <div className="justify-self-center sm:justify-self-end mt-1 sm:mt-auto">
