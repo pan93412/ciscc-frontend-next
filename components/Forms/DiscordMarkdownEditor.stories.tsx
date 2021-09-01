@@ -20,3 +20,9 @@ DiscordMarkdownEditorExample.args = {
   userInput: "Hello, **World**!",
   setUserInput: () => null,
 };
+
+export const WithUserTag = Template.bind({});
+WithUserTag.args = {
+  userInput: "Hello, <@1145141919810>!",
+  setUserInput: () => null,
+};
