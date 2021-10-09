@@ -52,8 +52,8 @@ export default function DiscordMarkdownEditor({
             )}
           </div>
           <div>---</div>
-          <div>想匿名說什麼？ → https://ciscc.pan93.tk</div>
-          <div>想當訊息審核員？ → https://ciscc.pan93.tk/review</div>
+          <div>想匿名說什麼？ → https://ciscc.pan93.com</div>
+          <div>想當訊息審核員？ → https://ciscc.pan93.com/review</div>
         </DiscordCard>
       </div>
     </section>

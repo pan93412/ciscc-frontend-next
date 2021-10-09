@@ -14,9 +14,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BACKEND_API_ENDPOINT: https://ciscc-api.pan93.tk
+      NEXT_PUBLIC_BACKEND_API_ENDPOINT: https://ciscc-api.pan93.com
       NEXT_PUBLIC_GA_ID: G-6WK3R5CPLF
-      STRAPI_ADMIN: https://ciscc-strapi.pan93.tk
+      STRAPI_ADMIN: https://ciscc-strapi.pan93.com
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
