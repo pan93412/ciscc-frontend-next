@@ -16,10 +16,10 @@ export default function Navbar() {
       </div>
       <div className="justify-self-center sm:justify-self-end mt-1 sm:mt-auto">
         <BaseButtonGroup>
-          <Link href="/review">
+          <Link href="/review" passHref>
             <BaseButton>審文</BaseButton>
           </Link>
-          <Link href="/">
+          <Link href="/" passHref>
             <BaseButton solid>發文</BaseButton>
           </Link>
         </BaseButtonGroup>
