@@ -10,7 +10,7 @@ import { buildApiMethodEndpoint } from "./common";
  * @constructor
  */
 export default async function SendMessage(message: string) {
-  return axios.post<Infer<typeof StrapiMessagesResponseEntrySchema>>(
+  return axios.post<Partial<Infer<typeof StrapiMessagesResponseEntrySchema>>>(
     buildApiMethodEndpoint("/messages"),
     {
       message,
